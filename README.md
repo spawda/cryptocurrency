@@ -5,18 +5,17 @@ I'm planning to add a price prediction program and an automated trading program.
 
 ## development environment
 - Python 3.7.3    
-- numpy 1.17.3    
 - requests 2.22.0
 
 ## How to use
 ### make_dataset.py
-Gathering and saving BTC/JPY price data per minute from coinckeck API (Public). To use this script, you don't have to sign up for coincheck account.  
+Gathering and saving BTC/JPY price data per minute from coinckeck API (Public). You don't have to sign up for coincheck account to use this script.   
 `> python make_dataset.py --save_dir [save directory path]`   
 --save_dir is optional and if not specified, current directory is used.
 
 example : `python make_dataset.py --save_dir ./btc_jpy`    
 
-Each line of saved data (csv file) stores the following:
+Price data is written in csv file, each line stores the following:
 ```
 date : date (JST, GMT +09:00)
 time : time (JST, GMT +09:00)
@@ -28,4 +27,4 @@ low : The lowest price within 24 hours (過去24時間での最低取引価格)
 volume : 24 hours trading volume (過去24時間での取引量)
 timestamp : timestamp (価格取得時のtimestamp)
 ```
-If API HTTP status code is not `200`, write status code instead of the price data.
+If API HTTP status code is not `200`, status code is written instead of the price data.
